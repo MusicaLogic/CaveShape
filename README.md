@@ -2,9 +2,9 @@
 
 CaveShape is an experimental reverb effect that places a **graphic EQ inside the feedback network** of the reverb.
 
-<!-- <p align="center">
+<p align="center">
   <img src="images/caveshape-demo.gif" width="700">
-</p> -->
+</p>
 
 Unlike a conventional EQ applied to the final reverb output, the EQ shapes the signal that is fed back into the reverb structure. This allows the frequency response of the reverberation to evolve as the signal continues to circulate through the feedback network.
 
@@ -22,7 +22,15 @@ CaveShape is an experimental project exploring the interaction between **reverbe
 
 More information and demonstrations:
 
-* YouTube link (shortly)
-* MusicaLogic blog post (shortly)
+* YouTube: https://youtu.be/wFVzWmk2qSU
+* MusicaLogic: https://musicalogic.wordpress.com/2026/09/24/caveshape-spectral-feedback-for-reverb/
 
 Part of the **MusicaLogic** experimental VST collection.
+
+<!-- 
+
+ffmpeg -i caveshape_demo_video.mp4 \
+  -vf "fps=7,scale=420:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 caveshape-demo.gif
+
+ -->
