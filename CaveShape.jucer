@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="YLcxHB" name="CaveShape" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginAAXCategory="8"
+              pluginManufacturer="musicalogic" aaxIdentifier="com.musicalogic.CaveShape">
+  <MAINGROUP id="gTRSri" name="CaveShape">
+    <GROUP id="{D38BA98F-CFCD-3269-D727-E90BAC9D73F1}" name="Source">
+      <GROUP id="{2910AE95-FF67-4C5E-F37B-BA52330426E8}" name="DSP">
+        <FILE id="pFV2Do" name="EQConstants.h" compile="0" resource="0" file="Source/DSP/EQConstants.h"/>
+        <FILE id="aY8fpr" name="GraphicEQ.h" compile="0" resource="0" file="Source/DSP/GraphicEQ.h"/>
+        <FILE id="e4qCmm" name="LightFreeverb.h" compile="0" resource="0" file="Source/DSP/LightFreeverb.h"/>
+        <FILE id="sn0dE0" name="SpectrumAnalyzer.cpp" compile="1" resource="0"
+              file="Source/DSP/SpectrumAnalyzer.cpp"/>
+        <FILE id="MFEarC" name="SpectrumAnalyzer.h" compile="0" resource="0"
+              file="Source/DSP/SpectrumAnalyzer.h"/>
+        <FILE id="ND7CbH" name="SpectrumBands.h" compile="0" resource="0" file="Source/DSP/SpectrumBands.h"/>
+        <FILE id="drpgjX" name="SpectrumDataBuffer.h" compile="0" resource="0"
+              file="Source/DSP/SpectrumDataBuffer.h"/>
+      </GROUP>
+      <GROUP id="{DFB7860C-56D4-3A3A-D1FC-213AFAB9BD91}" name="State">
+        <FILE id="cFKIYM" name="EQState.h" compile="0" resource="0" file="Source/State/EQState.h"/>
+      </GROUP>
+      <GROUP id="{F601DEDA-608C-3B98-FC4C-493D7DA335B0}" name="Style">
+        <FILE id="zC54qZ" name="VisualStyle.h" compile="0" resource="0" file="Source/Style/VisualStyle.h"/>
+      </GROUP>
+      <GROUP id="{C27D7E0E-927E-D9F2-BC23-A2F524722628}" name="UI">
+        <FILE id="lFxXCM" name="BandSelector.h" compile="0" resource="0" file="Source/UI/BandSelector.h"/>
+        <FILE id="D3u3cI" name="EQBand.h" compile="0" resource="0" file="Source/UI/EQBand.h"/>
+        <FILE id="BQ1FuP" name="EQDrawingArea.cpp" compile="1" resource="0"
+              file="Source/UI/EQDrawingArea.cpp"/>
+        <FILE id="Di3b11" name="EQDrawingArea.h" compile="0" resource="0" file="Source/UI/EQDrawingArea.h"/>
+        <FILE id="iJREHV" name="ParaGraphiQComponent.cpp" compile="1" resource="0"
+              file="Source/UI/ParaGraphiQComponent.cpp"/>
+        <FILE id="NbvZqn" name="ParaGraphiQComponent.h" compile="0" resource="0"
+              file="Source/UI/ParaGraphiQComponent.h"/>
+        <FILE id="d4dmu1" name="TouchBand.h" compile="0" resource="0" file="Source/UI/TouchBand.h"/>
+      </GROUP>
+      <FILE id="La4T0R" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="xeGLEi" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="fOd7Dt" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="YuM95o" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors_headless" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" microphonePermissionNeeded="1">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="CaveShape" macOSDeploymentTarget="12.0"
+                       osxCompatibility="12.0 SDK"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="CaveShape" macOSDeploymentTarget="12.0"
+                       osxCompatibility="12.0 SDK"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
