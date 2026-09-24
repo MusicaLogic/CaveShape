@@ -2,9 +2,9 @@
 
 CaveShape is an experimental reverb effect that places a **graphic EQ inside the feedback network** of the reverb.
 
-<p align="center">
+<!-- <p align="center">
   <img src="images/caveshape-demo.gif" width="700">
-</p>
+</p> -->
 
 Unlike a conventional EQ applied to the final reverb output, the EQ shapes the signal that is fed back into the reverb structure. This allows the frequency response of the reverberation to evolve as the signal continues to circulate through the feedback network.
 
@@ -12,7 +12,7 @@ The EQ can also introduce **positive gain within selected frequency regions**. U
 
 The combination of **spectral feedback, positive gain, and nonlinear amplitude limiting** can produce sustained and strongly colored reverberation characteristics that differ from those of a conventional room reverb.
 
-### Room Shape
+### Shaping the cave
 
 CaveShape provides a compact set of controls for the overall reverb behavior, while the integrated graphic EQ provides direct control over the spectral characteristics of the feedback network.
 
