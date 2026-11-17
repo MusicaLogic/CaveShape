@@ -2,7 +2,8 @@
 
 <JUCERPROJECT id="YLcxHB" name="CaveShape" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginAAXCategory="8"
-              pluginManufacturer="musicalogic" aaxIdentifier="com.musicalogic.CaveShape">
+              pluginManufacturer="MusicaLogic" aaxIdentifier="com.MusicaLogic.CaveShape"
+              companyName="MusicaLogic" pluginVST3Category="Reverb">
   <MAINGROUP id="gTRSri" name="CaveShape">
     <GROUP id="{D38BA98F-CFCD-3269-D727-E90BAC9D73F1}" name="Source">
       <GROUP id="{2910AE95-FF67-4C5E-F37B-BA52330426E8}" name="DSP">

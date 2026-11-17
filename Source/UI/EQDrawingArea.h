@@ -156,8 +156,8 @@ private:
     // EQ display parameters
     // ============================================================
 
-    static constexpr float minGain = -3.0f;
-    static constexpr float maxGain =  1.0f;
+    static constexpr float minGain = -0.2f;
+    static constexpr float maxGain =  0.1f;
 
 
     // Padding inside component

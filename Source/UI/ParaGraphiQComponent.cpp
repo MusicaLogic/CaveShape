@@ -438,7 +438,7 @@ void ParaGraphiQComponent::handleGainGesture(float amount)
     constexpr float gainRange = 12.0f;
 
     const float newGain =
-        gainAtGestureStart + amount * gainRange;
+        gainAtGestureStart + 0.05*amount * gainRange;
 
     gains[static_cast<size_t>(selectedBand)] =
         juce::jlimit(-12.0f, 12.0f, newGain);

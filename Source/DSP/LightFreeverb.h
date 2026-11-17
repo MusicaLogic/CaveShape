@@ -18,6 +18,38 @@
 
 #include "GraphicEQ.h"
 
+struct FeedbackHighPass
+{
+    float R = 0.0f;
+    float x1 = 0.0f;
+    float y1 = 0.0f;
+
+    void prepare(double sampleRate, float cutoff = 35.0f)
+    {
+        R = std::exp(
+            -2.0f * 3.14159265358979323846f
+            * cutoff / static_cast<float>(sampleRate));
+
+        reset();
+    }
+
+    inline float process(float x)
+    {
+        const float y = x - x1 + R * y1;
+
+        x1 = x;
+        y1 = y;
+
+        return y;
+    }
+
+    void reset()
+    {
+        x1 = 0.0f;
+        y1 = 0.0f;
+    }
+};
+
 class LightFreeverb
 {
 public:
@@ -75,7 +107,7 @@ public:
         value = std::clamp(value, 0.0f, 1.0f);
 
         for (auto& c : combs)
-            c.feedback = 0.7f + value * 0.28f;
+            c.feedback = 0.85f + value * 0.128f;
     }
 
 
@@ -156,18 +188,23 @@ public:
         float output = 0.0f;
 
         // Parallel comb bank.
-        for (auto& c : combs)
-            output += c.process(input);
+        for (auto& c : combs){
+            output += c.process(0.01*input);
+            output = std::tanh(.8f*output);
+        }
 
         // Series allpass section.
-        for (auto& a : allpasses)
+        for (auto& a : allpasses){
             output = a.process(output);
+            output = std::tanh(.8f*output);
+        }
         
-        output = 0.1f*output*wet*wet;
+        output = 5.f*output*wet;
         
         // clip output
-        output = output > 0.9 ? 0.9 : output < -0.9 ? -0.9 : output;
-
+//        output = output > 0.99 ? 0.99 : output < -0.99 ? -0.99 : output;
+        output = std::tanh(2.f*output);
+        
         return output + dry * inputCopy;
     }
     
@@ -222,7 +259,8 @@ private:
         float filterstore = 0.0f;
 
         GraphicEQ graphicEQ;
-
+        
+        FeedbackHighPass feedbackHighPass;
 
         void setDelay(int samples)
         {
@@ -236,6 +274,7 @@ private:
             const GraphicEQ::Frequencies& frequencies)
         {
             graphicEQ.prepare(sampleRate, frequencies);
+            feedbackHighPass.prepare(sampleRate, 35.0f);
         }
 
 
@@ -263,9 +302,17 @@ private:
         }
 
 
-        void setDamping(float d)
+//        void setDamping(float d)
+//        {
+//            damping = std::clamp(d, 0.0f, 1.0f);
+//        }
+        
+        void setDamping(float value)
         {
-            damping = std::clamp(d, 0.0f, 1.0f);
+            value = std::clamp(value, 0.0f, 1.0f);
+
+//            for (auto& c : combs)
+//                c.setDamping(0.2f + value * 0.7f);
         }
 
 
@@ -296,14 +343,20 @@ private:
             // -----------------------------------------------------------------
             const float equalized =
                 graphicEQ.processSample(v);
+            
+            // Remove sub-bass from the signal entering the delay line.
+            const float filtered =
+                feedbackHighPass.process(equalized);
 
-            buffer[idx] = equalized;
+//            buffer[idx] = equalized;
+            buffer[idx] = std::tanh(0.99f*filtered);
 
             if (++idx >= static_cast<int>(buffer.size()))
                 idx = 0;
             
             // clip comb output
-            const float clipped_output = output > 0.9 ? 0.9 : output < -0.9 ? -0.9 : output;
+//            const float clipped_output = output > 0.9 ? 0.9 : output < -0.9 ? -0.9 : output;
+            const float clipped_output = std::tanh(.99f*output);
             
 //            return output;
             return clipped_output;
@@ -321,6 +374,7 @@ private:
             idx = 0;
 
             graphicEQ.reset();
+            feedbackHighPass.reset();
         }
     };
 
@@ -360,8 +414,10 @@ private:
 
             if (++idx >= static_cast<int>(buffer.size()))
                 idx = 0;
-
-            return output;
+            
+            const float clipped_output = std::tanh(.99f*output);
+            
+            return clipped_output;
         }
 
 

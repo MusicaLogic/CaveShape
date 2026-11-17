@@ -551,8 +551,8 @@ private:
 
     static float clampGain(float gainDb)
     {
-        constexpr float minGain = -24.0f;
-        constexpr float maxGain =  24.0f;
+        constexpr float minGain = -.2f;
+        constexpr float maxGain =  .1f;
 
         return std::clamp(
             gainDb,

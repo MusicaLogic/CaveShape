@@ -221,16 +221,16 @@ void EQDrawingArea::drawAxisGuides(juce::Graphics& g)
 
     constexpr float guideGains[] =
     {
-        1.0f,
+        0.05f,
         0.0f,
-        -1.0f
+        -0.1f
     };
 
     constexpr const char* guideLabels[] =
     {
-        "+1dB",
+        "+0.05dB",
         "0dB",
-        "-1dB"
+        "-0.1dB"
     };
 
     for (int i = 0; i < 3; ++i)
